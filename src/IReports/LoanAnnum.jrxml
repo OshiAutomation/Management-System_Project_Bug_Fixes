@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LoanAnnum" language="groovy" pageWidth="900" pageHeight="600" orientation="Landscape" columnWidth="860" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b1f1b8d-28b6-41be-874a-f0841ca2f53e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="30"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     loans.`loanID`,
+     loans.`empID`,
+     loans.`loanAmount`,
+     loans.`datePaid`,
+     loans.`dueDate`,
+     loans.`leftToPay`,
+     loans.`datePaidBack`,
+     loans.`status`,
+     employee.`empName`
+FROM
+     `employee` employee INNER JOIN `loans` loans ON employee.`empID` = loans.`empID`]]>
+	</queryString>
+	<field name="loanID" class="java.lang.Integer"/>
+	<field name="empID" class="java.lang.String"/>
+	<field name="loanAmount" class="java.math.BigDecimal"/>
+	<field name="datePaid" class="java.sql.Date"/>
+	<field name="dueDate" class="java.sql.Date"/>
+	<field name="leftToPay" class="java.math.BigDecimal"/>
+	<field name="datePaidBack" class="java.sql.Date"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="empName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="158" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="324" y="136" width="200" height="22" forecolor="#000000" uuid="4e60825f-e170-4162-b4f8-e80cbc5f79e4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Annual Loan Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="98" width="333" height="20" forecolor="#996600" uuid="a50735fa-79d1-4f6b-8b80-87a9a0063041"/>
+				<text><![CDATA[No.1127C, Pannipitiya Road, Thalawatugoda, Sri Lanka. 10116]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="0" width="860" height="100" uuid="231c8262-4860-45a4-88d2-eeb49c5c7419"/>
+				<imageExpression><![CDATA["E:\\PROJECT\\Riyoma System\\src\\IReports\\a (2).jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="61" y="36" width="730" height="2" uuid="638ba89f-130a-47ff-8cd1-0e08dcc3e761"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="120" y="19" width="79" height="15" uuid="81dd0fb3-15e4-4d3b-ba34-5512b2d8133c"/>
+				<text><![CDATA[Employee ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="199" y="19" width="124" height="15" uuid="e8e545e8-c8fe-40ac-8284-41a8d4297b25"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="323" y="20" width="79" height="15" uuid="72696e17-33da-40a2-b590-02abb9e26046"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="402" y="19" width="87" height="15" uuid="de30937e-45b1-4355-959f-0c352a3d3119"/>
+				<text><![CDATA[Date Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="489" y="22" width="88" height="15" uuid="b3cdded7-858d-4dec-a95a-03a1fb7c83c8"/>
+				<text><![CDATA[Due Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="577" y="22" width="71" height="15" uuid="cdb93595-a09f-4681-b14d-cbd754fe1601"/>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="648" y="22" width="91" height="15" uuid="1d0a73fa-f34e-490d-9148-7eebccbb6128"/>
+				<text><![CDATA[Date Paid Back]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="61" y="21" width="59" height="15" uuid="d9235f9a-c027-49f9-9bd5-5177bac7ecf0"/>
+				<text><![CDATA[Loan ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="739" y="22" width="52" height="15" uuid="31a22e41-8892-4c5f-800b-f5a20a9bd303"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="61" y="15" width="730" height="1" uuid="c928eb96-3a11-4926-ac57-be3ffe8ad7b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="121" y="-1" width="79" height="15" uuid="015f9fa3-ca96-4494-9dad-acd4443e0704"/>
+				<textFieldExpression><![CDATA[$F{empID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="200" y="1" width="124" height="15" uuid="15868b3b-a7a2-48de-8202-efe517b183bd"/>
+				<textFieldExpression><![CDATA[$F{empName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="648" y="1" width="91" height="15" uuid="041a79bb-4133-4c54-ad66-3d52020d2c3f"/>
+				<textFieldExpression><![CDATA[$F{datePaidBack}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="403" y="0" width="86" height="15" uuid="fd1ebaa2-7fcb-4b5c-b426-abaec6e86000"/>
+				<textFieldExpression><![CDATA[$F{datePaid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="324" y="1" width="79" height="15" uuid="5b8bb6d6-3a51-4390-86a7-07ddd57f21c9"/>
+				<textFieldExpression><![CDATA[$F{loanAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="61" y="1" width="59" height="15" uuid="b05ef491-7b5f-4625-8d82-e52a82ad844e"/>
+				<textFieldExpression><![CDATA[$F{loanID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="489" y="1" width="88" height="15" uuid="5e36f9e0-0d33-4ff0-aa3c-35a5350cde44"/>
+				<textFieldExpression><![CDATA[$F{dueDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="577" y="1" width="71" height="15" uuid="f3b484f7-0cbd-45f0-90ef-34d6ca816e2a"/>
+				<textFieldExpression><![CDATA[$F{leftToPay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="739" y="0" width="52" height="15" uuid="2c3aa647-2667-40f8-8cb9-1470dc5e8439"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="61" y="-1" width="730" height="1" uuid="498503fc-2215-41e2-b81d-e77e4b26801c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="679" y="0" width="80" height="20" uuid="8f3bc599-9afd-446b-b9e0-2f877166cb84"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="759" y="0" width="40" height="20" uuid="b482ae76-39bb-460c-a46a-0651f5fa7c0b"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="61" y="0" width="197" height="20" uuid="4fb47d93-944b-45b9-b130-83083de1b122"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

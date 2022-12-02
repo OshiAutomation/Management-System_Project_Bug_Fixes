@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Employee" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e04573ac-7b07-4f76-9d84-5def56f350e2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     employee.`empID`,
+     employee.`empName`,
+     employee.`phone`,
+     employee.`address`,
+     employee.`email`,
+     employee.`designation`,
+     employee.`nic`
+FROM
+     `employee` employee]]>
+	</queryString>
+	<field name="empID" class="java.lang.String"/>
+	<field name="empName" class="java.lang.String"/>
+	<field name="phone" class="java.lang.Integer"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="nic" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="147" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="-3" y="125" width="200" height="22" forecolor="#000000" uuid="73626683-eaf2-4927-9a1d-21f3de564b08"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Employee Details Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="80" width="333" height="20" forecolor="#996600" uuid="638f6379-e88b-4586-aefd-7ffab8ddf64b"/>
+				<text><![CDATA[No.1127C, Pannipitiya Road, Thalawatugoda, Sri Lanka. 10116]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="5" width="759" height="77" uuid="0f05ce32-6a45-4aac-a3b5-0f8d3f05c2a1"/>
+				<imageExpression><![CDATA["E:\\PROJECT\\Riyoma System\\src\\IReports\\a (2).jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="36" width="719" height="2" uuid="f6d2d4f1-961c-432d-a921-563096532554"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="8653c6bb-ebba-4d62-965b-dcc88f17ba62"/>
+				<text><![CDATA[Employee ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="124" height="15" uuid="b53dd795-2bef-422d-9cb1-7ec7a0f966b1"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="203" y="20" width="79" height="15" uuid="328f6358-b2e2-4209-a967-3b5c213c88d1"/>
+				<text><![CDATA[Phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="282" y="19" width="113" height="15" uuid="ebf8f874-2404-4863-ad66-ac1dd5200127"/>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="21" width="143" height="15" uuid="960cf308-47bf-4dfa-bdf1-a4863831b759"/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="540" y="20" width="90" height="15" uuid="473877c0-2b28-48fb-83f1-5b3d0797ffdf"/>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="630" y="20" width="89" height="15" uuid="ffad3bed-d7ec-4602-a763-1fd9899cafbe"/>
+				<text><![CDATA[NIC no]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="719" height="1" uuid="a2fbcca7-197b-4514-94bd-04b43a5eca6b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="1" y="-1" width="79" height="15" uuid="09d90d11-ff90-4ef4-8372-4ae638c3aae0"/>
+				<textFieldExpression><![CDATA[$F{empID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="80" y="1" width="124" height="15" uuid="e54c025f-8520-42f2-9309-4d022395af0c"/>
+				<textFieldExpression><![CDATA[$F{empName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="395" y="0" width="143" height="15" uuid="b7534fc8-7436-4780-b534-15bf63f84a25"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="540" y="1" width="90" height="15" uuid="a457a226-8bb2-4584-95a6-0eca71bbe617"/>
+				<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="630" y="1" width="89" height="15" uuid="4e64e4d9-3467-45ea-ac9c-7cb9ed62f2d5"/>
+				<textFieldExpression><![CDATA[$F{nic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="283" y="0" width="113" height="15" uuid="f6bfbc47-aba7-41ab-93b8-69253c749d27"/>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="204" y="1" width="79" height="15" uuid="5218fd6e-c50a-43d3-b44a-c6e3969ad06a"/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-1" width="719" height="5" uuid="9d2f989d-747f-4e56-88c1-048bfdac44ec"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="6c9db631-4484-4a1e-9567-7bc0cfeaf43a"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="b78f191c-8938-4e71-beb5-29805411a791"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="2616ccbf-2f21-4a8c-9270-971ba3930a7c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

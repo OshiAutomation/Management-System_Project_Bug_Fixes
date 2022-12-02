@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d0262356-ac24-4898-a8bd-4156be682c41">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     customer.`cusOrderID` AS customer_cusOrderID,
+     customer.`cusName` AS customer_cusName,
+     customer.`company` AS customer_company,
+     customer.`phone` AS customer_phone,
+     customer.`email` AS customer_email,
+     customer.`address` AS customer_address,
+     delivery_agent.`agentId` AS delivery_agent_agentId,
+     delivery_agent.`name` AS delivery_agent_name,
+     delivery_agent.`company` AS delivery_agent_company,
+     delivery_agent.`phone` AS delivery_agent_phone,
+     delivery_agent.`location` AS delivery_agent_location,
+     delivery_agent.`chargingRate` AS delivery_agent_chargingRate,
+     delivery_agent.`rating` AS delivery_agent_rating,
+     order_delivery.`cusOrderID` AS order_delivery_cusOrderID,
+     order_delivery.`agentId` AS order_delivery_agentId,
+     order_delivery.`tripKM` AS order_delivery_tripKM,
+     order_delivery.`deliveryCost` AS order_delivery_deliveryCost,
+     order_delivery.`handoverDate` AS order_delivery_handoverDate
+FROM
+     `delivery_agent` delivery_agent INNER JOIN `order_delivery` order_delivery ON delivery_agent.`agentId` = order_delivery.`agentId`,
+     `customer` customer
+
+WHERE  order_delivery.`agentId`='900']]>
+	</queryString>
+	<field name="customer_cusOrderID" class="java.lang.Integer"/>
+	<field name="customer_cusName" class="java.lang.String"/>
+	<field name="customer_company" class="java.lang.String"/>
+	<field name="customer_phone" class="java.lang.Integer"/>
+	<field name="customer_email" class="java.lang.String"/>
+	<field name="customer_address" class="java.lang.String"/>
+	<field name="delivery_agent_agentId" class="java.lang.Integer"/>
+	<field name="delivery_agent_name" class="java.lang.String"/>
+	<field name="delivery_agent_company" class="java.lang.String"/>
+	<field name="delivery_agent_phone" class="java.lang.Integer"/>
+	<field name="delivery_agent_location" class="java.lang.String"/>
+	<field name="delivery_agent_chargingRate" class="java.math.BigDecimal"/>
+	<field name="delivery_agent_rating" class="java.lang.Integer"/>
+	<field name="order_delivery_cusOrderID" class="java.lang.Integer"/>
+	<field name="order_delivery_agentId" class="java.lang.Integer"/>
+	<field name="order_delivery_tripKM" class="java.lang.Integer"/>
+	<field name="order_delivery_deliveryCost" class="java.math.BigDecimal"/>
+	<field name="order_delivery_handoverDate" class="java.sql.Date"/>
+	<group name="delivery_agent_agentId">
+		<groupExpression><![CDATA[$F{delivery_agent_agentId}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="6cbd7d21-e161-4eec-8fc1-cb0e723224f5"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[delivery_agent_agentId]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="60bab202-6221-4cc9-890a-6846ef9775ff"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{delivery_agent_agentId}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="d65cec94-aa94-4839-9ec1-eade680ccd41"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="0ec8e04a-3d36-491a-8b0d-858d1fd46f7b"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="5f533a35-2c2e-42a8-baff-f71c7a9e4e6b"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="e13e55fb-fb11-47cf-a53e-44a4f8520814"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="129082ef-4b0c-43d6-9da0-55072c64f275"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="02872d67-0e0c-4df7-bd2a-3ec727d8c2f1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_cusOrderID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="32" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7bdc3029-1909-4769-9b95-29c393ac6eef"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_cusName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="64" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="22b97696-cfb5-4418-b750-38f66ef2f854"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="96" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c1388609-14ba-42fe-afbc-16bcf765d246"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ab458ac4-9556-4be1-b1d3-6c20a78adb9a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="baeaeb57-80af-42d9-bc2c-da3fa0445f29"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[customer_address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="192" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4ab2641d-e321-446c-8f30-6fe44cb81497"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="224" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="dc4c76b1-7b73-4231-a0d2-253417e2479e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="256" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f63675fa-7325-43b6-ba37-03ab23acc166"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="30e07cfe-334a-4347-993b-126f624a80d5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="320" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="70fae888-c9a4-4757-8a5a-957597476cf9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_chargingRate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="352" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0de7b6b5-b318-4d84-804a-18d1c4993041"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[delivery_agent_rating]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="384" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d53120a3-cb1c-42db-9585-af6e40bcf01c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[order_delivery_cusOrderID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="416" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e4dc260c-f716-4501-ac37-ffe1ee16c245"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[order_delivery_agentId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="448" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2b7ff9ba-f66c-426c-8c83-5dd3f68668e2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[order_delivery_tripKM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="480" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="cb16d27a-8509-4269-8275-64113734d081"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[order_delivery_deliveryCost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="512" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ae5f3522-f812-44ae-9542-d614f1ccae5e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[order_delivery_handoverDate]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="83425dbe-3dbe-4c6b-b294-8aa123989bf9"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="32" height="20" uuid="59648cd7-5daa-40e7-996c-8521c494b19c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_cusOrderID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="32" y="0" width="32" height="20" uuid="d87c9a23-a99f-4720-8b9f-05b8c9a18689"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_cusName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="64" y="0" width="32" height="20" uuid="209aed46-42c5-4721-81b3-c1963437afd3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_company}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="96" y="0" width="32" height="20" uuid="d3e4527a-f976-4a46-8d98-c8d0b3278b4c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_phone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="128" y="0" width="32" height="20" uuid="b3470455-2305-4fce-83a9-75ba6e4ee7bd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_email}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="160" y="0" width="32" height="20" uuid="bedb9fdf-0297-4292-8564-186ee8cc63b8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_address}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="192" y="0" width="32" height="20" uuid="d0fb09a9-c47f-475f-bf1b-3b701c4bd312"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="224" y="0" width="32" height="20" uuid="1e7d8eab-8084-4233-bc75-cf1bb7710866"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_company}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="0" width="32" height="20" uuid="978c4490-d2b7-42e4-8a13-3415719f3220"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_phone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="288" y="0" width="32" height="20" uuid="4493f799-a125-4f04-b34d-5cc17f49d3c2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_location}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="320" y="0" width="32" height="20" uuid="d26ac5ae-d178-4afc-91d5-c4c15bb3a5db"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_chargingRate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="352" y="0" width="32" height="20" uuid="aa2f1981-51bd-4672-9d40-a8b6406d25f3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delivery_agent_rating}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="384" y="0" width="32" height="20" uuid="9ebf1012-9311-4611-b3e3-adc3979741b8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_delivery_cusOrderID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="416" y="0" width="32" height="20" uuid="32aff083-0cb3-4f13-b4d1-206a6038ac24"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_delivery_agentId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="448" y="0" width="32" height="20" uuid="3aa14469-a972-48fe-9478-717def3a5040"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_delivery_tripKM}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="0" width="32" height="20" uuid="be75ed1f-70e0-45d6-bd87-26ab669517fc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_delivery_deliveryCost}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="512" y="0" width="32" height="20" uuid="3d7b2dff-260d-4df3-bbfa-e8a4d2510694"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_delivery_handoverDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7ac7cebf-a871-4c4c-ab03-b077c1595574"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="10d0885d-0a7c-422f-afd3-5a7e994b23a6"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="ddd28c4e-96a7-4a92-9076-2936d8224dae"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

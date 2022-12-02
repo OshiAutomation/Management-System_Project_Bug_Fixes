@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SelInvoice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="orderID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     customer_order.`cusOrderID` AS customer_order_cusOrderID,
+     customer_order.`orderAmount` AS customer_order_orderAmount,
+     customer_order.`orderDate` AS customer_order_orderDate,
+     item.`CusOrderID` AS item_CusOrderID,
+     item.`MachineID` AS item_MachineID,
+     item.`UnitPrice` AS item_UnitPrice,
+     item.`Quantity` AS item_Quantity,
+     item.`TotAmount` AS item_TotAmount,
+     order_delivery.`cusOrderID` AS order_delivery_cusOrderID,
+     order_delivery.`agentId` AS order_delivery_agentId,
+     order_delivery.`tripKM` AS order_delivery_tripKM,
+     order_delivery.`deliveryCost` AS order_delivery_deliveryCost,
+     order_delivery.`handoverDate` AS order_delivery_handoverDate,
+     SUM( item.`TotAmount`) AS field1
+FROM
+     `customer_order` customer_order INNER JOIN `order_delivery` order_delivery ON customer_order.`cusOrderID` = order_delivery.`cusOrderID`,
+     `item` item
+WHERE
+    customer_order.`cusOrderID`=$P{orderID}]]>
+	</queryString>
+	<field name="customer_order_cusOrderID" class="java.lang.Integer"/>
+	<field name="customer_order_orderAmount" class="java.math.BigDecimal"/>
+	<field name="customer_order_orderDate" class="java.sql.Date"/>
+	<field name="item_CusOrderID" class="java.lang.Integer"/>
+	<field name="item_MachineID" class="java.lang.String"/>
+	<field name="item_UnitPrice" class="java.lang.Double"/>
+	<field name="item_Quantity" class="java.lang.Integer"/>
+	<field name="item_TotAmount" class="java.lang.Double"/>
+	<field name="order_delivery_cusOrderID" class="java.lang.Integer"/>
+	<field name="order_delivery_agentId" class="java.lang.Integer"/>
+	<field name="order_delivery_tripKM" class="java.lang.Integer"/>
+	<field name="order_delivery_deliveryCost" class="java.math.BigDecimal"/>
+	<field name="order_delivery_handoverDate" class="java.sql.Date"/>
+	<field name="field1" class="java.lang.Double"/>
+	<variable name="field1_1" class="java.lang.Double" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{field1}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="80"/>
+				<imageExpression><![CDATA["E:\\PROJECT\\Riyoma System\\src\\IReports\\riyoma.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="200" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="28" y="115" width="124" height="15"/>
+				<textElement/>
+				<text><![CDATA[Customer Order ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="152" y="115" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{customer_order_cusOrderID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="108" y="142" width="44" height="15"/>
+				<textElement/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="152" y="137" width="116" height="20"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="240" y="45" width="70" height="25"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="109" y="34" width="356" height="2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="128" y="20" width="94" height="15"/>
+				<textElement/>
+				<text><![CDATA[Machine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="291" y="20" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="364" y="19" width="82" height="15"/>
+				<textElement/>
+				<text><![CDATA[Item Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="140" y="1" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_MachineID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="291" y="1" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="364" y="0" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_TotAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_UnitPrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="300" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="365" y="86" width="81" height="27"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{customer_order_orderAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="280" y="86" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[Total Cost :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="249" y="52" width="111" height="15"/>
+				<textElement/>
+				<text><![CDATA[Delivary Charge  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="365" y="52" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{order_delivery_deliveryCost}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="360" y="86" width="68" height="1"/>
+			</line>
+			<line>
+				<reportElement x="360" y="113" width="68" height="1"/>
+			</line>
+			<line>
+				<reportElement x="360" y="126" width="68" height="1"/>
+			</line>
+			<textField evaluationTime="Page">
+				<reportElement x="365" y="16" width="100" height="25"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{field1_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="260" y="16" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Order Amount :]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="420" y="268" width="121" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="248" width="164" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cashier :...........................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="268" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CUSTOMER COPY]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
